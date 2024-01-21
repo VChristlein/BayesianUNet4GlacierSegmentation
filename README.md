@@ -1,6 +1,6 @@
-**Bayesian U-Net for Segmenting Glaciers in Sar Imagery**
+# Bayesian U-Net for Segmenting Glaciers in Sar Imagery
 
-**Abstract**
+## Abstract
 Fluctuations of the glacier calving front have an important influence over the
 ice flow of whole glacier systems. It is therefore important to precisely
 monitor the position of the calving front. However, the manual delineation of
