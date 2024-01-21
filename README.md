@@ -23,14 +23,7 @@ pipelines.
 
 ## Cite
 If you find this code useful, please cite:
-A. Hartmann, A. Davari, T. Seehaus, M. Braun, A. Maier and V. Christlein, 
-"Bayesian U-Net for Segmenting Glaciers in Sar Imagery," 
-2021 IEEE International Geoscience and Remote Sensing Symposium IGARSS, 
-Brussels, Belgium, 2021, pp. 3479-3482, 
-doi: 10.1109/IGARSS47720.2021.9554292.
-
-Bibtex:
-@INPROCEEDINGS{9554292,
+```@INPROCEEDINGS{9554292,
   author={Hartmann, Andreas and Davari, Amirabbas and Seehaus, Thorsten and Braun, Matthias and Maier, Andreas and Christlein, Vincent},
   booktitle={2021 IEEE International Geoscience and Remote Sensing Symposium IGARSS}, 
   title={Bayesian U-Net for Segmenting Glaciers in Sar Imagery}, 
@@ -39,35 +32,39 @@ Bibtex:
   number={},
   pages={3479-3482},
   doi={10.1109/IGARSS47720.2021.9554292}}
-
+```
 
 **U-Net Segmentation**
 
 Data Generation
-usage: data_generator.py [-h] [--out_path OUT_PATH] [--csv_file CSV_FILE] [--patch_size PATCH_SIZE]
+usage: ```data_generator.py [-h] [--out_path OUT_PATH] [--csv_file CSV_FILE] [--patch_size PATCH_SIZE]```
 
 Dataset Generator
 
 optional arguments:
+```
   -h, --help            show this help message and exit
   --out_path OUT_PATH   output path for dataset
   --csv_file CSV_FILE   Csv file containing img paths for dataset
   --patch_size PATCH_SIZE
                         Size of generated image patches
+```
 
 Example:
-python3 preprocessing/data_generator.py --csv_file validation_images.csv --out_path front_detection_dataset/val
+```python3 preprocessing/data_generator.py --csv_file validation_images.csv --out_path front_detection_dataset/val```
 
 -----------------------------------
 Training + Inference
 
-usage: main.py [-h] [--epochs EPOCHS] [--patience PATIENCE] [--batch_size BATCH_SIZE] [--patch_size PATCH_SIZE] [--no_early_stopping] [--loss {binary_crossentropy,focal_loss,combined_loss}]
+usage: 
+```
+main.py [-h] [--epochs EPOCHS] [--patience PATIENCE] [--batch_size BATCH_SIZE] [--patch_size PATCH_SIZE] [--no_early_stopping] [--loss {binary_crossentropy,focal_loss,combined_loss}]
                [--loss_parms KEY1=VAL1,KEY2=VAL2...] [--image_aug KEY1=VAL1,KEY2=VAL2...] [--denoise {none,bilateral,median,nlmeans,enhanced_lee,kuan}] [--denoise_parms KEY1=VAL1,KEY2=VAL2...] [--patches_only]
                [--out_path OUT_PATH] [--data_path DATA_PATH] [--model {unet,unet_bayes,two_stage}] [--drop_rate DROP_RATE] [--learning_rate LEARNING_RATE] [--no_predict] [--no_evaluate] [--mc_iterations MC_ITERATIONS]
                [--second_stage] [--uncert_threshold UNCERT_THRESHOLD] [--multi_class]
-
+```
 Glacier Front Segmentation
-
+```
 optional arguments:
   -h, --help            show this help message and exit
   --epochs EPOCHS       number of training epochs (integer value > 0)
@@ -107,10 +104,10 @@ optional arguments:
   --multi_class         Use MultiClass Segmentation
 
 python main.py --data_path front_detection_dataset --out_path out_optimized --model two_stage --batch_size 16
-
+```
 -----------------------------------
-Prediction Only
-
+**Prediction Only**
+```
 usage: predict.py [-h] [--model_path MODEL_PATH] [--img_path IMG_PATH] [--out_path OUT_PATH] [--uncert_path UNCERT_PATH] [--uncert_threshold UNCERT_THRESHOLD] [--gt_path GT_PATH] [--batch_size BATCH_SIZE] [--cutoff CUTOFF]
                   [--patches_only]
 
@@ -131,12 +128,13 @@ optional arguments:
                         batch size (integer value)
   --cutoff CUTOFF       cutoff point of binarisation
   --patches_only        optimized prediction algorithm for small image patches
-
+```
 Example for unet evaluation of pix2pix generated images:
+```
 python predict.py --model_path out_unet --out_path out_unet_pix2pix_eval --img_path pix2pix_generated/images --gt_path Jakobshavn/test/patches/masks --batch_size 16 --patches_only
-
-
+```
 Complete Example:
+```
 python3 preprocessing/data_generator.py --csv_file validation_images.csv --out_path front_detection_dataset/val
 python3 preprocessing/data_generator.py --csv_file train_images.csv --out_path front_detection_dataset/train
 python3 preprocessing/data_generator.py --csv_file test_images.csv --out_path front_detection_dataset/test
@@ -151,9 +149,9 @@ datasets
 train  
     |--->  images: contains SAR-Images  
     |--->  masks: contains labeled glacier segmentation  
-
+```
 **Training + Inference**  
-python main.py --data_path *path to datasets* --out_path *output path* --model *model name* --batch_size 16  
+```python main.py --data_path *path to datasets* --out_path *output path* --model *model name* --batch_size 16  
 
 data_path: folder containing train,val and test datasets  
 out_path:  folder for segmentation predictions and evaluation results  
@@ -161,9 +159,9 @@ out_path:  folder for segmentation predictions and evaluation results
 available models: unet: model used by Zhang et. al  
                   unet_bayes: Bayesian U-Net  
                   two-stage: 2-Stage Optimization, with two unet_bayes models  
-
+```
 **Output**
-
+```
 *model_name*_history.h5 :   Trained model  
 *model_name*_history.csv:   Training history  
 options.json:               Options and parameters used  
@@ -173,3 +171,4 @@ dice_cutoff:                Tried cutoff points + resulting dice
 val_image_list.json:        Validation image names + patch numbers  
 train_image_list.json:      Train image names + patch numbers  
 scores.pkl:                 Pandas Dataframe with evaluation results for each image  
+```
