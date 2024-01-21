@@ -1,5 +1,7 @@
 # Bayesian U-Net for Segmenting Glaciers in Sar Imagery
 
+This code basis was created by Andreas Hartmann. All credits to him.
+
 ## Abstract
 Fluctuations of the glacier calving front have an important influence over the
 ice flow of whole glacier systems. It is therefore important to precisely
@@ -19,14 +21,24 @@ similarity, which is an overall improvement in the segmentation performance
 compared to the state-of-the-art deterministic U-Net-based glacier segmentation
 pipelines.
 
-This code basis was created by Andreas Hartmann. All credits to him.
-
+## Cite
 If you find this code useful, please cite:
 A. Hartmann, A. Davari, T. Seehaus, M. Braun, A. Maier and V. Christlein, 
 "Bayesian U-Net for Segmenting Glaciers in Sar Imagery," 
 2021 IEEE International Geoscience and Remote Sensing Symposium IGARSS, 
 Brussels, Belgium, 2021, pp. 3479-3482, 
 doi: 10.1109/IGARSS47720.2021.9554292.
+
+Bibtex:
+@INPROCEEDINGS{9554292,
+  author={Hartmann, Andreas and Davari, Amirabbas and Seehaus, Thorsten and Braun, Matthias and Maier, Andreas and Christlein, Vincent},
+  booktitle={2021 IEEE International Geoscience and Remote Sensing Symposium IGARSS}, 
+  title={Bayesian U-Net for Segmenting Glaciers in Sar Imagery}, 
+  year={2021},
+  volume={},
+  number={},
+  pages={3479-3482},
+  doi={10.1109/IGARSS47720.2021.9554292}}
 
 
 **U-Net Segmentation**
