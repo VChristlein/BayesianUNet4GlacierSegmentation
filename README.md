@@ -37,12 +37,13 @@ If you find this code useful, please cite:
 **U-Net Segmentation**
 
 Data Generation
-usage: ```data_generator.py [-h] [--out_path OUT_PATH] [--csv_file CSV_FILE] [--patch_size PATCH_SIZE]```
+usage: 
+```
+data_generator.py [-h] [--out_path OUT_PATH] [--csv_file CSV_FILE] [--patch_size PATCH_SIZE]
 
 Dataset Generator
 
 optional arguments:
-```
   -h, --help            show this help message and exit
   --out_path OUT_PATH   output path for dataset
   --csv_file CSV_FILE   Csv file containing img paths for dataset
@@ -51,7 +52,9 @@ optional arguments:
 ```
 
 Example:
-```python3 preprocessing/data_generator.py --csv_file validation_images.csv --out_path front_detection_dataset/val```
+```
+python3 preprocessing/data_generator.py --csv_file validation_images.csv --out_path front_detection_dataset/val
+```
 
 -----------------------------------
 Training + Inference
@@ -62,9 +65,9 @@ main.py [-h] [--epochs EPOCHS] [--patience PATIENCE] [--batch_size BATCH_SIZE] [
                [--loss_parms KEY1=VAL1,KEY2=VAL2...] [--image_aug KEY1=VAL1,KEY2=VAL2...] [--denoise {none,bilateral,median,nlmeans,enhanced_lee,kuan}] [--denoise_parms KEY1=VAL1,KEY2=VAL2...] [--patches_only]
                [--out_path OUT_PATH] [--data_path DATA_PATH] [--model {unet,unet_bayes,two_stage}] [--drop_rate DROP_RATE] [--learning_rate LEARNING_RATE] [--no_predict] [--no_evaluate] [--mc_iterations MC_ITERATIONS]
                [--second_stage] [--uncert_threshold UNCERT_THRESHOLD] [--multi_class]
-```
+
 Glacier Front Segmentation
-```
+
 optional arguments:
   -h, --help            show this help message and exit
   --epochs EPOCHS       number of training epochs (integer value > 0)
@@ -151,7 +154,8 @@ train
     |--->  masks: contains labeled glacier segmentation  
 ```
 **Training + Inference**  
-```python main.py --data_path *path to datasets* --out_path *output path* --model *model name* --batch_size 16  
+```
+python main.py --data_path *path to datasets* --out_path *output path* --model *model name* --batch_size 16  
 
 data_path: folder containing train,val and test datasets  
 out_path:  folder for segmentation predictions and evaluation results  
